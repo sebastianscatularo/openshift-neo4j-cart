@@ -4,8 +4,8 @@ locked_files:
 - bin/
 - bin/control
 - bin/install
-- conf/
-- conf/*
+#- conf/
+#- conf/*
 - conf/ssl/
 - conf/ssl/*
 - env/
