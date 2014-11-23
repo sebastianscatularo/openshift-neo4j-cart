@@ -1,14 +1,25 @@
 #!/bin/bash -e
 
 #
-# install the neo4j graph database into the openshift app
+# Script that install Neo4J grap database into the openshift app.
 #
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-client_result "installing Neo4j....`date`"
+client_result "Installing Neo4j....`date`"
 
 #Neo4j installation
-tar xvzf $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j-community-2.1.5-unix.tar.gz --directory=$OPENSHIFT_NEO4J_DIR
-mv $OPENSHIFT_NEO4J_DIR/neo4j-community-2.1.5* $OPENSHIFT_NEO4J_DIR/neo4j
 
-client_result "install complete....`date`"
+# Old Installation
+#tar xvzf $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j-community-2.1.5-unix.tar.gz --directory=$OPENSHIFT_NEO4J_DIR
+#mv $OPENSHIFT_NEO4J_DIR/neo4j-community-2.1.5* $OPENSHIFT_NEO4J_DIR/neo4j
+
+# New Installation
+client_result "Uncompressing files ... "
+tar xvzf $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j-community-2.1.5-unix.tar.gz
+
+client_result "Removing unnecesaries files ... "
+rm $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j-community-2.1.5-unix.tar.gz
+
+client_result "Finishing installation ... "
+mv $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j-community-2.1.5* $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j
+client_result "Install complete....`date`"
