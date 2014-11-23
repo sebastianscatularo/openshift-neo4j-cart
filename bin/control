@@ -16,39 +16,39 @@ function status() {
 }
 
 function start() {
-    client_result "about to start the server"
-    client_result "starting neo4j...."
+    client_result "About to start the server"
+    client_result "Starting neo4j...."
+    neo4j start
     #$OPENSHIFT_NEO4J_DIR/bin/neo4j start > $OPENSHIFT_NEO4J_DIR/data/log/server.log 2>&1 &
-    client_result "started the server"
+    client_result "Started the server"
 }
 
 function stop() {
-    #neo4j stop
-    echo "Stoped"
+    client_result "Stopping the server"
+    neo4j stop
+    client_result "Stoped the server"
 }
 
 function restart() {
-    if (stop); then
-        start
-    else
-        start
-    fi
+    client_result "Restarting the server"
+    neo4j restart
+    client_result "Restarted the server"
 }
 
 function build() {
-	client_result "control build voltdb...."	
+	client_result "control build neo4j...."	
 }
 
 function post-deploy() {
-	client_result "control post-deploy voltdb...."	
+	client_result "control post-deploy neo4j...."	
 }
 
 function pre-build() {
-	client_result "control pre-build voltdb...."	
+	client_result "control pre-build neo4j...."	
 }
 
 function tidy() {
-	client_result "control tidy voltdb...."	
+	client_result "control tidy neo4j...."	
 }
 
 #
