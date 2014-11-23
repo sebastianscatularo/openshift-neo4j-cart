@@ -1,0 +1,22 @@
+---
+snapshot_exclusions:
+locked_files:
+- bin/
+- bin/control
+- bin/install
+- conf/
+- conf/*
+- conf/ssl/
+- conf/ssl/*
+- env/
+- env/*
+- hooks/
+- hooks/*
+- metadata/
+- metadata/*
+processed_templates:
+- 'conf/logging.properties.erb'
+- 'conf/neo4j-http-logging.xml.erb'
+- 'conf/neo4j-wrapper.conf.erb'
+- 'conf/windows-wrapper-logging.properties.erb'
+- 'conf/neo4j-server.properties.erb'
