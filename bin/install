@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+#
+# install the neo4j graph database into the openshift app
+#
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+client_result "installing Neo4j....`date`"
+
+#Neo4j installation
+tar xvzf $OPENSHIFT_VOLTDB_DIR/versions/2.1.5/neo4j-community-2.1.5-unix.tar.gz --directory=$OPENSHIFT_VOLTDB_DIR
+mv $OPENSHIFT_VOLTDB_DIR/neo4j-community-2.1.5* $OPENSHIFT_VOLTDB_DIR/neo4j
+
+client_result "install complete....`date`"

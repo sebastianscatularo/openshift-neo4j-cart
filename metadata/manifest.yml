@@ -1,0 +1,26 @@
+Name: neo4j
+Cartridge-Short-Name: NEO4J
+Display-Name: neo4j-2.1.5
+Description: The neo4j graph database community edition cartridge (http://www.neo4j.org).
+Version: "2.1.5"
+Website: cartridge provided by sebastianscatularo@gmail.com
+Cartridge-Version: 0.1.0
+Cartridge-Vendor: Sebastian Scatularo
+Categories:
+  - service
+  - database
+  - embedded
+Provides:
+  - neo4j-2.1.5
+  - neo4j
+Scaling:
+  Min: 1
+  Max: -1
+Endpoints:
+  - Private-IP-Name:   HOST
+    Private-Port-Name: PORT
+    Private-Port:      8090
+    Private-Port:      21212
+    Public-Port-Name:  PORT
+
+Source-Url: https://github.com/abloos/openshift-neo4j-cart.git

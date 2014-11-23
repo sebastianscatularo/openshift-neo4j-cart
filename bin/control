@@ -1,0 +1,118 @@
+#!/bin/bash
+
+version=neo4j
+
+function status() {
+    client_result $pwd
+    ps -C neo4j > /dev/null
+    if [ "$?" -eq "0" ]
+        then
+            client_result "Neo4j is running";
+        else
+            client_result "Neo4j is not running";
+    fi
+}
+
+function start() {
+    client_result "starting neo4j...."
+    host=`hostname`
+    ps -C neo4j > /dev/null
+    if [ "$?" -eq "0" ] 
+        then
+            client_result "neo4j is running already...run stop first";
+        else
+            getinternalip
+            client_result "neo4j is not running...starting it now"
+            export HOME=${HOME}/app-root/data
+            nohup voltdb create --internal 16700 --externalinterface $internaladdressip --zookeeper 16300 --httphost $internaladdressip -d $OPENSHIFT_DATA_DIR/currentdeployment.xml  --zkhost $internaladdressip -H $internaladdressip --internalinterface $internaladdressip $OPENSHIFT_DATA_DIR/currentschema.jar > $OPENSHIFT_VOLTDB_DIR/logs/startup.log &
+        fi
+
+}
+
+function update() {
+    stop
+    ./.openshift/action_hooks/build
+}
+
+function getinternalip() {
+	cart_short_name=`primary_cartridge_short_name`
+	cart_ip_name=`primary_cartridge_private_ip_name`
+
+    internaladdress="OPENSHIFT_"$cart_short_name"_"$cart_ip_name
+    internaladdressip=${!internaladdress}
+
+    echo $internaladdress
+    echo ${!internaladdress}
+
+    client_result "$internaladdress $internaladdressip"
+
+}
+
+
+
+
+function stop() {
+
+	getinternalip
+
+	client_result "stopping voltdb...."
+    client_result "voltdb is running ...issuing stop ";
+	export HOME=${HOME}/app-root/data
+    voltadmin pause -H $internaladdressip;
+    voltadmin shutdown -H $internaladdressip;
+
+   	return 1
+
+}
+
+function restart() {
+    if (stop); then
+        start
+    else
+        start
+    fi
+}
+
+function build() {
+	client_result "control build voltdb...."	
+}
+
+function post-deploy() {
+	client_result "control post-deploy voltdb...."	
+}
+
+function pre-build() {
+	client_result "control pre-build voltdb...."	
+}
+
+function tidy() {
+	client_result "control tidy voltdb...."	
+}
+
+#
+#  main():
+#
+
+# Ensure arguments.
+if ! [ $# -gt 0 ]; then
+    echo "Usage: $0 [start|restart|graceful|graceful-stop|stop|status|update|use-source]"
+    exit 1
+fi
+
+# Source utility functions.
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+# Handle commands.
+case "$1" in
+    start)               start       ;;
+    restart|graceful)    restart     ;;
+    graceful-stop|stop)  stop        ;;
+    status)              status      ;;
+    build)               build       ;;
+    pre-build)           pre-build   ;;
+    post-deploy)         post-deploy ;;
+    tidy)                tidy        ;;
+    update)              update      ;;
+    use-source)          use-source  $2 $3 ;;
+    *)
+esac
