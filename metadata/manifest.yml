@@ -5,7 +5,7 @@ Description: The neo4j graph database community edition cartridge (http://www.ne
 Version: "2.1.5"
 Website: cartridge provided by sebastianscatularo@gmail.com
 Cartridge-Version: 0.1.0
-Cartridge-Vendor: Sebastian Scatularo
+Cartridge-Vendor: sebastian_scatularo
 Categories:
   - service
   - database
