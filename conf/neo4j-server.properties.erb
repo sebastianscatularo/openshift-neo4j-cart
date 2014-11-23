@@ -42,7 +42,7 @@ org.neo4j.server.webserver.https.enabled=true
 
 # Internally generated keystore (don't try to put your own
 # keystore there, it will get deleted when the server starts)
-org.neo4j.server.webserver.https.keystore.location=<%= ENV['OPENSHIFT_DATA_DIR'] %>/data/keystore
+org.neo4j.server.webserver.https.keystore.location=<%= ENV['OPENSHIFT_DATA_DIR'] %>neo4j/data/keystore
 
 #*****************************************************************
 # Administration client configuration
@@ -52,7 +52,7 @@ org.neo4j.server.webserver.https.keystore.location=<%= ENV['OPENSHIFT_DATA_DIR']
 # - absolute path like /var/rrd
 # - path relative to the server working directory like data/rrd
 # - commented out, will default to the database data directory.
-org.neo4j.server.webadmin.rrdb.location=<%= ENV['OPENSHIFT_DATA_DIR'] %>/data/rrd
+org.neo4j.server.webadmin.rrdb.location=<%= ENV['OPENSHIFT_DATA_DIR'] %>neo4j/data/rrd
 
 # REST endpoint for the data API
 # Note the / in the end is mandatory
@@ -62,7 +62,7 @@ org.neo4j.server.webadmin.data.uri=/db/data/
 org.neo4j.server.webadmin.management.uri=/db/manage/
 
 # Low-level graph engine tuning file
-org.neo4j.server.db.tuning.properties=<%= ENV['OPENSHIFT_NEO4J_DIR'] %>/conf/neo4j.properties
+org.neo4j.server.db.tuning.properties=<%= ENV['OPENSHIFT_NEO4J_DIR'] %>conf/neo4j.properties
 
 # The console services to be enabled
 org.neo4j.server.manage.console_engines=shell
@@ -89,5 +89,5 @@ org.neo4j.server.http.log.enabled=false
 # archived. Note: changing the rollover and retention policy is sensible, but
 # changing the output format is less so, since it is configured to use the
 # ubiquitous common log format
-org.neo4j.server.http.log.config=<%= ENV['OPENSHIFT_NEO4J_DIR'] %>/conf/neo4j-http-logging.xml
+org.neo4j.server.http.log.config=<%= ENV['OPENSHIFT_NEO4J_DIR'] %>conf/neo4j-http-logging.xml
 
