@@ -22,10 +22,11 @@ rm "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j-community-2.1.5-unix.tar.gz
 
 client_result "Finishing installation ... "
 mv "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j-community-2.1.5 "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j
+chmod +x "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j/bin/neo4j
 
 client_result "Setting up database location ..."
-rm -rf "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j/data
-mkdir -p "$OPENSHIFT_DATA_DIR"neo4j/data
+mv "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j/data "$OPENSHIFT_DATAQ_DIR"neo4j/data
+#mkdir -p "$OPENSHIFT_DATA_DIR"neo4j/data
 ln -s "$OPENSHIFT_DATA_DIR"neo4j/data "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j/data
 
 client_result "Setting up database configuration ..."
