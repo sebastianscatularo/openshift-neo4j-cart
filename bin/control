@@ -11,7 +11,8 @@ function status() {
 }
 
 function start() {
-    $NEO4J_BIN_DIR/neo4j start -host $OPENSHIFT_NEO4J_DB_HOST -port $OPENSHIFT_NEO4J_DB_PORT
+    bin/neo4j start -host $OPENSHIFT_NEO4J_DB_HOST -port $OPENSHIFT_NEO4J_DB_PORT
+    #$NEO4J_BIN_DIR/neo4j start -host $OPENSHIFT_NEO4J_DB_HOST -port $OPENSHIFT_NEO4J_DB_PORT
 }
 
 function stop() {

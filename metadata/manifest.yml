@@ -55,3 +55,7 @@ Endpoints:
 Publishes:
   publish-db-connection-info:
     Type: "ENV:NET_TCP:db:connection-info"
+Subscribes:
+ reset-password-info:
+    Type: "FILESYSTEM:reset-password"
+    Required: false
