@@ -25,9 +25,10 @@ mv "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j-community-2.1.5 "$OPENSHIFT_NEO4J_
 chmod +x "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j/bin/neo4j
 
 client_result "Setting up database location ..."
+# If exist the folder, we delete it.
+[ -d "$OPENSHIFT_DATA_DIR"neo4j ] && rm -rf "$OPENSHIFT_DATA_DIR"neo4j
 mkdir -p "$OPENSHIFT_DATA_DIR"neo4j
-mv "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j/data "$OPENSHIFT_DATA_DIR"neo4j/data
-#mkdir -p "$OPENSHIFT_DATA_DIR"neo4j/data
+mv "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j/data "$OPENSHIFT_DATA_DIR"neo4j
 ln -s "$OPENSHIFT_DATA_DIR"neo4j/data "$OPENSHIFT_NEO4J_DIR"versions/2.1.5/neo4j/data
 
 client_result "Setting up database configuration ..."
