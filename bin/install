@@ -15,7 +15,6 @@ client_result "Installing Neo4j....`date`"
 
 # New Installation
 client_result "Uncompressing files ... "
-mkdir -p $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j
 tar xvzf $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j-community-2.1.5-unix.tar.gz --directory=$OPENSHIFT_NEO4J_DIR/versions/2.1.5/
 
 client_result "Removing unnecesaries files ... "
@@ -27,7 +26,7 @@ mv $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j-community-2.1.5 $OPENSHIFT_NEO4J_DI
 client_result "Setting up database location ..."
 rm -rf $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j/data
 mkdir -p $OPENSHIFT_DATA_DIR/neo4j/data
-ln -s $OPENSHIFT_DATA_DIR/neo4j/data $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j/data
+ln -s $OPENSHIFT_DATA_DIRneo4j/data $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j/data
 
 client_result "Setting up database configuration ..."
 rm -rf $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j/conf
