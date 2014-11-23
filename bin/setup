@@ -4,14 +4,5 @@ set -u
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-client_result "Setting up database location ..."
-rm -rf $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j/data
-mkdir -p $OPENSHIFT_DATA_DIR/neo4j/data
-ln -s $OPENSHIFT_DATA_DIR/neo4j/data $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j/data
-
-client_result "Setting up database configuration ..."
-rm -rf $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j/conf
-ln -s $OPENSHIFT_NEO4J_DIR/conf $OPENSHIFT_NEO4J_DIR/versions/2.1.5/neo4j/conf
-
 client_result "Setting up paths ..."
 echo ${OPENSHIFT_NEO4J_DIR}versions/2.1.5/bin > ${OPENSHIFT_NEO4J_DIR}env/OPENSHIFT_NEO4J_PATH_ELEMENT
