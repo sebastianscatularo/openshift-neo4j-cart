@@ -9,12 +9,12 @@
 
 # location of the database directory 
 # org.neo4j.server.database.location=data/graph.db
-org.neo4j.server.database.location=<%= ENV['OPENSHIFT_DATA_DIR'] %>/data/graph.db
+org.neo4j.server.database.location=<%= ENV['OPENSHIFT_DATA_DIR'] %>neo4j/data/graph.db
 
 # Let the webserver only listen on the specified IP. Default is localhost (only
 # accept local connections). Uncomment to allow any connection. Please see the
 # security section in the neo4j manual before modifying this.
-#org.neo4j.server.webserver.address=0.0.0.0
+org.neo4j.server.webserver.address=<%= ENV['OPENSHIFT_NEO4J_HOST'] %>
 
 #
 # HTTP Connector

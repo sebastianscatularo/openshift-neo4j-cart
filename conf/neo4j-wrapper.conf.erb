@@ -1,6 +1,6 @@
-wrapper.java.additional=-Dorg.neo4j.server.properties=<%= ENV['OPENSHIFT_NEO4J_DIR'] %>/conf/neo4j-server.properties
-wrapper.java.additional=-Djava.util.logging.config.file=<%= ENV['OPENSHIFT_NEO4J_DIR'] %>/conf/logging.properties
-wrapper.java.additional=-Dlog4j.configuration=file:<%= ENV['OPENSHIFT_NEO4J_DIR'] %>/conf/log4j.properties
+wrapper.java.additional=-Dorg.neo4j.server.properties=<%= ENV['OPENSHIFT_NEO4J_DIR'] %>conf/neo4j-server.properties
+wrapper.java.additional=-Djava.util.logging.config.file=<%= ENV['OPENSHIFT_NEO4J_DIR'] %>conf/logging.properties
+wrapper.java.additional=-Dlog4j.configuration=file:<%= ENV['OPENSHIFT_NEO4J_DIR'] %>conf/log4j.properties
 
 #********************************************************************
 # JVM Parameters
@@ -10,7 +10,7 @@ wrapper.java.additional=-XX:+UseConcMarkSweepGC
 wrapper.java.additional=-XX:+CMSClassUnloadingEnabled
 
 # Uncomment the following lines to enable garbage collection logging
-#wrapper.java.additional=-Xloggc:<%= ENV['OPENSHIFT_DATA_DIR'] %>/data/log/neo4j-gc.log
+#wrapper.java.additional=-Xloggc:<%= ENV['OPENSHIFT_DATA_DIR'] %>data/log/neo4j-gc.log
 #wrapper.java.additional=-XX:+PrintGCDetails
 #wrapper.java.additional=-XX:+PrintGCDateStamps
 #wrapper.java.additional=-XX:+PrintGCApplicationStoppedTime
@@ -28,7 +28,7 @@ wrapper.java.additional=-XX:+CMSClassUnloadingEnabled
 # Wrapper settings
 #********************************************************************
 # path is relative to the bin dir
-wrapper.pidfile=<%= ENV['OPENSHIFT_DATA_DIR'] %>/data/neo4j-server.pid
+wrapper.pidfile=<%= ENV['OPENSHIFT_DATA_DIR'] %>data/neo4j-server.pid
 
 #********************************************************************
 # Wrapper Windows NT/2000/XP Service Properties

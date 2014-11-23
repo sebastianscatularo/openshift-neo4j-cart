@@ -5,4 +5,4 @@ set -u
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 client_result "Setting up paths ..."
-echo ${OPENSHIFT_NEO4J_DIR}versions/2.1.5/bin > ${OPENSHIFT_NEO4J_DIR}env/OPENSHIFT_NEO4J_PATH_ELEMENT
+echo "${OPENSHIFT_NEO4J_DIR}"versions/2.1.5/neo4j/bin > "${OPENSHIFT_NEO4J_DIR}"env/OPENSHIFT_NEO4J_PATH_ELEMENT
